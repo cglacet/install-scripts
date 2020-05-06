@@ -13,6 +13,7 @@ if ! [ -d .git ]; then
 fi
 
 # https://stackoverflow.com/a/3278427/1720199
+UPSTREAM=${1:-'@{u}'}
 LOCAL=$(git rev-parse @)
 BASE=$(git merge-base @ "$UPSTREAM")
 
