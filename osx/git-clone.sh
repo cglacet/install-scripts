@@ -10,14 +10,7 @@ if ! [ -d .git ]; then
     echo "That's the first time you run this script."
     echo "Retreiving source from Github (${blue}${git_url}${nc})."
     git clone -q $git_url . &> /dev/null
-fi
-
-# https://stackoverflow.com/a/3278427/1720199
-UPSTREAM=${1:-'@{u}'}
-LOCAL=$(git rev-parse @)
-BASE=$(git merge-base @ "$UPSTREAM")
-
-if [ $LOCAL = $BASE ]; then 
+else
     echo "Updating source from Github (${blue}${git_url}${nc})."
     git pull origin master &> /dev/null
 fi
