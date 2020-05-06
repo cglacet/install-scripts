@@ -12,7 +12,11 @@ if ! [ -d .git ]; then
     git clone -q $git_url . &> /dev/null
 fi
 
-if ! git diff --quiet remotes/origin/HEAD; then 
+# https://stackoverflow.com/a/3278427/1720199
+LOCAL=$(git rev-parse @)
+BASE=$(git merge-base @ "$UPSTREAM")
+
+if [ $LOCAL = $BASE ]; then 
     echo "Updating source from Github (${blue}${git_url}${nc})."
     git pull origin master &> /dev/null
 fi
