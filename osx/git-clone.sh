@@ -1,8 +1,5 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/cglacet/install-scripts/master/osx/install-git.sh)"
 
-echo "Arguments are '$@'"
-echo "Arguments are $*"
-
 install_dir=$1
 git_url=$2
 
